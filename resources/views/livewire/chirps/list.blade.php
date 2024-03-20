@@ -28,6 +28,15 @@ $edit = function (Chirp $chirp) {
  
 on(['chirp-created' => $getChirps]); 
 
+ 
+$delete = function (Chirp $chirp) {
+    $this->authorize('delete', $chirp);
+ 
+    $chirp->delete();
+ 
+    $this->getChirps();
+}; 
+
 ?>
 
 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y"> 
@@ -58,6 +67,9 @@ on(['chirp-created' => $getChirps]);
                                 <x-dropdown-link wire:click="edit({{ $chirp->id }})">
                                     {{ __('Edit') }}
                                 </x-dropdown-link>
+                                <x-dropdown-link wire:click="delete({{ $chirp->id }})" wire:confirm="Are you sure to delete this chirp?"> 
+                                    {{ __('Delete') }}
+                                </x-dropdown-link> 
                             </x-slot>
                         </x-dropdown>
                     @endif
