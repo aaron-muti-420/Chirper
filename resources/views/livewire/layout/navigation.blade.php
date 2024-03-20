@@ -26,6 +26,7 @@ new class extends Component
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
+
                 </div>
 
                 <!-- Navigation Links -->
@@ -33,6 +34,9 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('chirps')" :active="request()->routeIs('chirps')" wire:navigate>
+        {{ __('Chirps') }}
+    </x-nav-link>
                 </div>
             </div>
 
